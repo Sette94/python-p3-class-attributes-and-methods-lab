@@ -51,27 +51,17 @@ class Song:
     def add_to_genre_count(cls, self, increment=1):
 
         if self.genre in cls.genre_count:
-            cls.genre_count[self.genre] += 1
+            cls.genre_count[self.genre] += increment
         else:
             cls.genre_count[self.genre] = 1
 
     @classmethod
     def add_to_artist_count(cls, self, increment=1):
 
-        if (cls.artist_count == {}):
-            cls.artist_count.update(
-                {
-                    self.artist: 1
-                }
-            )
+        if self.artist in cls.artist_count:
+            cls.artist_count[self.artist] += increment
         else:
-            for key in list(cls.artist_count.keys()):
-                if (self.artist == key):
-                    cls.artist_count[key] += increment
-
-                else:
-                    cls.artist_count[self.artist] = 1
-                    pass
+            cls.artist_count[self.artist] = 1
 
 
 # ipdb.set_trace()
